@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>万物互联、极致体验</title>
+  <style>
+    @font-face {
+      font-family: "Calligraphy";
+      src: url("素材/fonts/书法.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      color: #050505;
+      background: #fff;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    .page {
+      width: min(100%, 700px);
+      min-height: 425px;
+      margin: 0 auto;
+      padding: 14px 32px 10px;
+    }
+
+    h1 {
+      margin: 0 0 36px;
+      text-align: center;
+      font-family: "Calligraphy", "STKaiti", serif;
+      font-size: 26px;
+      line-height: 1.45;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      min-width: 0;
+      text-align: center;
+    }
+
+    .feature-logo {
+      display: block;
+      height: 50px;
+      margin: 0 auto 7px;
+      object-fit: contain;
+    }
+
+    .feature:first-child .feature-logo {
+      width: 42px;
+    }
+
+    .feature:last-child .feature-logo {
+      width: 54px;
+    }
+
+    .feature p {
+      margin: 0;
+      font-family: SimSun, "宋体", serif;
+      font-size: 12px;
+      line-height: 23px;
+      text-align: justify;
+      text-align-last: center;
+    }
+
+    .platform-title {
+      margin: 32px 0 10px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 0;
+    }
+
+    .platform {
+      margin: 0;
+      text-align: center;
+    }
+
+    .platform-icon-wrap {
+      display: flex;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .platform img {
+      display: block;
+      max-width: 42px;
+      max-height: 34px;
+      object-fit: contain;
+    }
+
+    .platform figcaption {
+      font-family: SimSun, "宋体", serif;
+      font-size: 10px;
+      line-height: 1.3;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 18px 20px 24px;
+      }
+
+      h1 {
+        margin-bottom: 28px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .platforms {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>万物互联、极致体验</h1>
+
+    <section class="features" aria-label="HTML5 与 CSS3 介绍">
+      <article class="feature">
+        <img class="feature-logo" src="素材/images/1.png" alt="HTML5">
+        <p>【HTML5】HTML5不仅仅是HTML规范的当前最新版本，HTML5进化的重大意义还在于HTML5从技术层面带来了八个类别的革新。HTML5规范以“用户至上”为宗旨。也就是说在遇到冲突时，规范的优先级为：用户&gt;页面作者&gt;实现者（浏览器）&gt;规范开发者（W3C/WHATWG）&gt;纯理论。除此之外，HTML5还引入了一种新的安全模型来保证HTML5足够安全。</p>
+      </article>
+
+      <article class="feature">
+        <img class="feature-logo" src="素材/images/2.png" alt="CSS3">
+        <p>【HTML5】HTML5不仅仅是HTML规范的当前最新版本，HTML5进化的重大意义还在于HTML5从技术层面带来了八个类别的革新。HTML5规范以“用户至上”为宗旨。也就是说在遇到冲突时，规范的优先级为：用户&gt;页面作者&gt;实现者（浏览器）&gt;规范开发者（W3C/WHATWG）&gt;纯理论。除此之外，HTML5还引入了一种新的安全模型来保证HTML5足够安全。</p>
+      </article>
+    </section>
+
+    <h2 class="platform-title">平台支持</h2>
+    <section class="platforms" aria-label="支持平台">
+      <figure class="platform">
+        <div class="platform-icon-wrap"><img src="素材/images/3.png" alt="Apple"></div>
+        <figcaption>原生移动APP开发</figcaption>
+      </figure>
+      <figure class="platform">
+        <div class="platform-icon-wrap"><img src="素材/images/4.png" alt="微信"></div>
+        <figcaption>微信公众号开发</figcaption>
+      </figure>
+      <figure class="platform">
+        <div class="platform-icon-wrap"><img src="素材/images/5.png" alt="网站"></div>
+        <figcaption>网站开发</figcaption>
+      </figure>
+      <figure class="platform">
+        <div class="platform-icon-wrap"><img src="素材/images/6.png" alt="桌面应用"></div>
+        <figcaption>桌面应用开发</figcaption>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>
