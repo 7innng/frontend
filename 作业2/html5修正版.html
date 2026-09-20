@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术博客 - HTML5 学习笔记</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+            line-height: 1.6;
+            color: #33404e;
+            background: #e7f0fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(160deg, #f0f6fd 0%, #dbe9fa 100%);
+        }
+
+        a {
+            color: #1768c5;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+            padding: 8px 12px;
+            color: #ffffff;
+            background: #163f72;
+            border-radius: 6px;
+            transform: translateY(-160%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            padding: 42px 20px;
+            text-align: center;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2b7de0 0%, #00b4d8 100%);
+        }
+
+        .site-header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 2.75rem);
+            letter-spacing: 0.18em;
+            text-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+        }
+
+        .site-nav {
+            padding: 12px 24px;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgb(43 125 224 / 12%);
+        }
+
+        .site-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .site-nav a {
+            display: block;
+            padding: 5px 14px;
+            border-radius: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.25s, background-color 0.25s;
+        }
+
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
+            color: #ffffff;
+            background: #2b7de0;
+        }
+
+        main {
+            display: grid;
+            gap: 24px;
+            width: min(calc(100% - 32px), 760px);
+            margin: 0 auto;
+            padding: 42px 0;
+        }
+
+        .card {
+            padding: 30px clamp(20px, 5vw, 36px);
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 12px 32px rgb(43 125 224 / 15%);
+        }
+
+        .card > h2 {
+            margin: 0 0 18px;
+            padding-left: 12px;
+            border-left: 4px solid #2b7de0;
+            color: #22303f;
+            font-size: 1.3rem;
+        }
+
+        .toc {
+            margin-bottom: 22px;
+            padding: 14px 18px;
+            background: #f5f9ff;
+            border-radius: 8px;
+        }
+
+        .toc h3 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.4rem;
+        }
+
+        .toc a {
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .toc a:hover,
+        .toc a:focus-visible {
+            text-decoration: underline;
+        }
+
+        .article-section + .article-section {
+            margin-top: 24px;
+        }
+
+        .article-section h3 {
+            margin: 0 0 8px;
+            color: #22303f;
+        }
+
+        .article-section p {
+            margin: 0 0 12px;
+        }
+
+        .html5-figure {
+            display: grid;
+            justify-items: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .html5-figure svg {
+            width: min(220px, 60vw);
+            height: auto;
+            filter: drop-shadow(0 8px 12px rgb(43 125 224 / 18%));
+        }
+
+        .html5-figure figcaption {
+            color: #5e6f82;
+            font-size: 0.9rem;
+        }
+
+        .comment-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-field {
+            display: grid;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-weight: 600;
+            color: #22303f;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #b8c7d9;
+            border-radius: 8px;
+            font: inherit;
+            color: inherit;
+            background: #ffffff;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .form-field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-field input:focus-visible,
+        .form-field textarea:focus-visible {
+            border-color: #2b7de0;
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(43 125 224 / 18%);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            border: 0;
+            border-radius: 8px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2b7de0, #00b4d8);
+            font: inherit;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: opacity 0.25s, transform 0.15s, box-shadow 0.25s;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .submit-button:focus-visible {
+            outline: 3px solid #163f72;
+            outline-offset: 3px;
+        }
+
+        .form-status {
+            min-height: 1.5em;
+            margin: 0;
+            color: #17603a;
+        }
+
+        .comment-list {
+            display: grid;
+            gap: 10px;
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .comment-list li {
+            padding: 12px 14px;
+            background: #f5f9ff;
+            border-left: 3px solid #2b7de0;
+            border-radius: 6px;
+        }
+
+        .site-footer {
+            padding: 22px;
+            text-align: center;
+            color: #5e6f82;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+    <header class="site-header">
+        <h1>技术博客</h1>
+    </header>
+
+    <nav class="site-nav" aria-label="主要导航">
+        <ul>
+            <li><a href="#article">文章</a></li>
+            <li><a href="#comments">评论</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <article id="article" class="card">
+            <h2>HTML5 学习笔记</h2>
+
+            <nav class="toc" aria-label="文章目录">
+                <h3>目录</h3>
+                <ol>
+                    <li><a href="#item1">HTML5 简介</a></li>
+                    <li><a href="#item2">语义化标签</a></li>
+                </ol>
+            </nav>
+
+            <section id="item1" class="article-section">
+                <h3>一 HTML5 简介</h3>
+                <p>本笔记介绍 HTML5 的核心特性，适合初学者快速入门。</p>
+
+                <figure class="html5-figure">
+                    <svg viewBox="0 0 180 200" role="img" aria-labelledby="html5-logo-title html5-logo-description">
+                        <title id="html5-logo-title">HTML5 标志</title>
+                        <desc id="html5-logo-description">橙色盾牌中央显示白色数字 5</desc>
+                        <path fill="#e44d26" d="M18 8h144l-13 147-59 17-59-17z"/>
+                        <path fill="#f16529" d="M90 160V20h59l-11 126z"/>
+                        <path fill="#ffffff" d="M50 44h80l-1 17H69l2 18h56l-5 54-32 9-32-9-2-28h17l1 15 16 4 16-4 2-24H55z"/>
+                    </svg>
+                    <figcaption>HTML5 标志示意图</figcaption>
+                </figure>
+
+                <p>HTML5 是网页标准的重要版本，支持多媒体、绘图与语义化等特性。</p>
+            </section>
+
+            <section id="item2" class="article-section">
+                <h3>二 语义化标签</h3>
+                <p>编写网页时，应使用能够说明内容角色的标签，让文档结构更清晰，也便于搜索引擎和辅助技术理解页面。</p>
+            </section>
+        </article>
+
+        <section id="comments" class="card" aria-labelledby="comments-title">
+            <h2 id="comments-title">发表评论</h2>
+            <form id="comment-form" class="comment-form">
+                <div class="form-field">
+                    <label for="nickname">昵称</label>
+                    <input id="nickname" name="nickname" type="text" autocomplete="nickname" maxlength="30" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="comment">评论</label>
+                    <textarea id="comment" name="comment" maxlength="500" required></textarea>
+                </div>
+
+                <button class="submit-button" type="submit">提交评论</button>
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <ul id="comment-list" class="comment-list" aria-label="已提交评论"></ul>
+        </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <small>版权所有 © 2026 某某公司</small>
+    </footer>
+
+    <script>
+        const commentForm = document.querySelector("#comment-form");
+        const commentList = document.querySelector("#comment-list");
+        const formStatus = document.querySelector("#form-status");
+
+        commentForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(commentForm);
+            const nickname = String(formData.get("nickname")).trim();
+            const comment = String(formData.get("comment")).trim();
+
+            if (!nickname || !comment) {
+                formStatus.textContent = "请填写昵称和评论内容。";
+                return;
+            }
+
+            const commentItem = document.createElement("li");
+            const author = document.createElement("strong");
+            const content = document.createElement("span");
+
+            author.textContent = `${nickname}：`;
+            content.textContent = comment;
+            commentItem.append(author, content);
+            commentList.prepend(commentItem);
+
+            commentForm.reset();
+            formStatus.textContent = "评论已添加到当前页面。";
+            document.querySelector("#nickname").focus();
+        });
+    </script>
+</body>
+</html>
